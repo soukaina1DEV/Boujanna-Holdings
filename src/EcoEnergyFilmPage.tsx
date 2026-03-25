@@ -1,28 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Trophy } from "lucide-react";
 import {
-  ChevronRight,
+  Trophy,
   Play,
-  Sun,
-  Snowflake,
-  Shield,
-  Sparkles,
-  Thermometer,
   Building2,
   GraduationCap,
   Landmark,
   Home,
   Check,
   ArrowRight,
-  Phone,
-  Mail,
-  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Accordion,
   AccordionContent,
@@ -981,8 +970,8 @@ export default function Platform2Page() {
               "/images/client13.webp",
               "/images/client14.webp",
               "/images/client15.webp",
-            ].map((logo, i) => (
-              <div className="group flex items-center justify-center">
+            ].map((logo) => (
+              <div key={logo} className="group flex items-center justify-center">
                 <img
                   src={logo}
                   alt="client"

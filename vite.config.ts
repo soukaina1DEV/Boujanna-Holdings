@@ -6,6 +6,10 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 // https://vite.dev/config/
 export default defineConfig({
   base: './',
+  build: {
+    // Avoid Vite's emptyDir on Windows (ENOTEMPTY on dist/images). dist is removed in prebuild.
+    emptyOutDir: false,
+  },
   plugins: [inspectAttr(), react()],
   resolve: {
     alias: {

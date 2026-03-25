@@ -33,13 +33,6 @@ const navItems: NavItem[] = [
   { id: "esg", label: "ESG Certifications" },
 ];
 
-const quickBenefits = [
-  "Up to 40% energy savings",
-  "99% UV protection",
-  "Improved thermal comfort",
-  "ROI in 2–4 years",
-];
-
 const floatingBenefits = [
   "Reduces material fading on furniture, fabrics, and finishes",
   "Improves indoor thermal comfort in hot environments",
