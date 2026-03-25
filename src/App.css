@@ -1,0 +1,330 @@
+/* App-specific styles */
+
+/* Smooth scroll behavior for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure sections stack properly */
+main {
+  position: relative;
+}
+
+/* Animation helper classes */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Ensure images don't cause layout shift */
+.bg-image {
+  will-change: transform, opacity;
+}
+
+/* Content center responsive adjustments */
+@media (max-width: 1024px) {
+  .content-center {
+    max-width: 85vw;
+  }
+}
+
+/* Mobile navigation menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 11, 12, 0.98);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.mobile-menu .nav-link {
+  font-size: 1.5rem;
+}
+
+/* Platform cards hover effect */
+.platform-item {
+  transition: transform 0.4s ease;
+}
+
+.platform-item:hover {
+  transform: translateY(-8px);
+}
+
+/* Legacy portrait hover */
+.legacy-portrait img {
+  transition: transform 0.6s ease;
+}
+
+.legacy-portrait:hover img {
+  transform: scale(1.03);
+}
+
+/* Form focus states */
+.form-input:focus {
+  border-color: #C9A45C;
+}
+
+/* Button press effect */
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Loading state for images */
+.bg-image {
+  background-color: #0B0B0C;
+}
+
+/* Print styles */
+@media print {
+  .nav-fixed {
+    display: none;
+  }
+  
+  .section-pinned {
+    height: auto;
+    page-break-inside: avoid;
+  }
+}
+
+
+
+
+
+
+
+
+
+.nav-dropdown{
+  position:relative;
+  display:flex;
+}
+
+/* dropdown container */
+
+.dropdown-menu{
+  position:absolute;
+  top:140%;
+  left:0;
+
+  background:rgba(11,11,12,0.75);
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(201,164,92,0.15);
+
+  min-width:260px;
+  padding:14px 0;
+
+  opacity:0;
+  transform:translateY(12px) scale(.98);
+
+  transition:
+  opacity .35s ease,
+  transform .35s ease;
+
+  pointer-events:none;
+}
+
+/* show */
+
+.nav-dropdown:hover .dropdown-menu{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+
+/* gold top line */
+
+.dropdown-menu::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  height:1px;
+  width:0;
+
+  background:#C9A45C;
+
+  transition:width .4s ease;
+}
+
+.nav-dropdown:hover .dropdown-menu::before{
+  width:100%;
+}
+
+/* links */
+
+.dropdown-link{
+  display:block;
+
+  padding:12px 22px;
+
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+
+  color:#cfcfcf;
+
+  transition:
+  color .25s ease,
+  padding-left .25s ease;
+}
+
+/* hover */
+
+.dropdown-link:hover{
+  color:#C9A45C;
+  padding-left:28px;
+}
+
+
+
+
+
+
+
+
+.nav-active{
+  color:#C9A45C;
+}
+.nav-active::after{
+  content:"";
+  display:block;
+  height:1px;
+  background:#C9A45C;
+  margin:6px auto 0;
+}
+
+
+
+
+.nav-fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 60px;
+
+  background: rgba(11, 11, 12, 0.85);
+  backdrop-filter: blur(12px);
+
+  border-bottom: none;
+}
+
+
+
+
+
+
+/* ===== SUB NAVBAR ===== */
+
+.subnav{
+  position: sticky;
+  top: 63px;
+  z-index: 90;
+
+  background: rgba(11, 11, 12, 0.85); /* نفس navbar */
+  backdrop-filter: blur(12px); /* نفس navbar */
+
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* container */
+.subnav-container {
+  display: flex;
+  gap: 28px;
+
+  padding: 14px 60px;
+
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.subnav-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* links */
+.subnav-link {
+  position: relative;
+
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.6);
+
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+}
+
+/* hover */
+.subnav-link:hover {
+  color: #C9A45C;
+}
+
+/* ACTIVE LINK */
+.subnav-link.active {
+  color: #C9A45C;
+}
+
+/* underline effect */
+.subnav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 1px;
+
+  background: #C9A45C;
+
+  transition: width 0.3s ease;
+}
+
+/* hover underline */
+.subnav-link:hover::after {
+  width: 100%;
+}
+
+/* active underline */
+.subnav-link.active::after {
+  width: 100%;
+}
+
+/* GOLD LINE (Boujanna style) */
+.subnav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    #C9A45C,
+    transparent
+  );
+
+  opacity: 0.4;
+}
+
+
+

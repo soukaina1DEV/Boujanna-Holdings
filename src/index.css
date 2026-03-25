@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4.7%;
+    --foreground: 43 23% 94%;
+    --card: 0 0% 4.7%;
+    --card-foreground: 43 23% 94%;
+    --popover: 0 0% 4.7%;
+    --popover-foreground: 43 23% 94%;
+    --primary: 43 45% 57%;
+    --primary-foreground: 0 0% 4.7%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 43 23% 94%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 43 10% 60%;
+    --accent: 43 45% 57%;
+    --accent-foreground: 0 0% 4.7%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 43 45% 57%;
+    --radius: 0rem;
+    
+    --color-bg-dark: #0B0B0C;
+    --color-bg-light: #F4F2EC;
+    --color-gold: #C9A45C;
+    --color-text-light: #F4F2EC;
+    --color-text-dark: #0B0B0C;
+    --color-text-muted-light: rgba(244,242,236,0.72);
+    --color-text-muted-dark: rgba(11,11,12,0.70);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Typography */
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+
+.font-sans {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Gold accent color */
+.text-gold {
+  color: var(--color-gold);
+}
+
+.bg-gold {
+  background-color: var(--color-gold);
+}
+
+.border-gold {
+  border-color: var(--color-gold);
+}
+
+/* Background colors */
+.bg-dark {
+  background-color: var(--color-bg-dark);
+}
+
+.bg-light {
+  background-color: var(--color-bg-light);
+}
+
+/* Text colors */
+.text-light {
+  color: var(--color-text-light);
+}
+
+.text-dark {
+  color: var(--color-text-dark);
+}
+
+.text-muted-light {
+  color: var(--color-text-muted-light);
+}
+
+/* Section base styles */
+.section-pinned {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-flowing {
+  width: 100%;
+  position: relative;
+}
+
+/* Background image */
+.bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Gradient overlays */
+.overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,11,12,0.35) 0%, rgba(11,11,12,0.65) 100%);
+  z-index: 1;
+}
+
+.overlay-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(11,11,12,0.4) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Grain texture */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  z-index: 3;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Content container */
+.content-center {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 4vw;
+  max-width: 900px;
+}
+
+/* Gold rule */
+.gold-rule {
+  width: clamp(72px, 10vw, 160px);
+  height: 1px;
+  background-color: var(--color-gold);
+  margin: 0 auto;
+}
+
+/* Label style */
+.label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(10px, 1vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* Title style */
+.title-serif {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.08;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+/* Body text */
+.body-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text-muted-light);
+  max-width: 640px;
+}
+
+/* CTA link */
+.cta-link {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(12px, 0.95vw, 14px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.cta-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(201, 164, 92, 0.35);
+  transition: background-color 0.3s ease;
+}
+
+.cta-link:hover {
+  color: var(--color-gold);
+}
+
+.cta-link:hover::after {
+  background-color: var(--color-gold);
+}
+
+/* Navigation */
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 4vh 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.nav-fixed.scrolled {
+  background-color: rgba(11, 11, 12, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.nav-wordmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14px, 1.2vw, 18px);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(24px, 2.5vw, 40px);
+}
+
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(11px, 0.9vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-gold);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Light section styles */
+.section-light .title-serif {
+  color: var(--color-text-dark);
+}
+
+.section-light .body-text {
+  color: var(--color-text-muted-dark);
+}
+
+.section-light .cta-link {
+  color: var(--color-text-dark);
+}
+
+.section-light .cta-link:hover {
+  color: var(--color-gold);
+}
+
+/* Domain card */
+.domain-card {
+  padding: clamp(24px, 3vw, 40px);
+  border: 1px solid rgba(201, 164, 92, 0.15);
+  background: rgba(11, 11, 12, 0.6);
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.domain-card:hover {
+  border-color: rgba(201, 164, 92, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Legacy portrait */
+.legacy-portrait {
+  position: relative;
+  overflow: hidden;
+}
+
+.legacy-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(11,11,12,0.8) 100%);
+  pointer-events: none;
+}
+
+/* Platform section */
+.platform-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Contact section */
+.contact-section {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+}
+
+/* Form styles */
+.form-input {
+  width: 100%;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(11, 11, 12, 0.2);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--color-text-dark);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: var(--color-gold);
+}
+
+.form-input::placeholder {
+  color: rgba(11, 11, 12, 0.5);
+}
+
+/* Submit button */
+.submit-btn {
+  padding: 16px 48px;
+  background-color: var(--color-text-dark);
+  color: var(--color-text-light);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 164, 92, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 164, 92, 0.5);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .content-center {
+    padding: 0 6vw;
+  }
+  
+  .title-serif {
+    font-size: clamp(28px, 8vw, 44px);
+  }
+}
+
+
+
